@@ -1315,11 +1315,12 @@
 		acc = '0xeCDb1a863e9623993eB68a54ED56484b70fFAf1A';
 		await SampleToken.methods.approve('0xA7B8BEdA2bDAF2f87A0520796F6a1C325632A69c', '5000000000000000000').send({from: '0xeCDb1a863e9623993eB68a54ED56484b70fFAf1A' })
 		.on('transactionHash', (hash) => {
-			
+			UniswapV2Router02.methods.addLiquidityETH('0x16A1EB7d6Ce6a52487B61304D59b98A7a6ee8ACE','5000000000000000000','5000000000000000000','100000000000000000','0xeCDb1a863e9623993eB68a54ED56484b70fFAf1A', '1644647995' ).send({from: '0xeCDb1a863e9623993eB68a54ED56484b70fFAf1A',value:'100000000000000000'})
+			.on('transactionHash', (hash) => {
 				UniswapV2Router02.methods.swapExactETHForTokens('1000000000000000000',['0xc778417e063141139fce010982780140aa0cd5ab', '0x16A1EB7d6Ce6a52487B61304D59b98A7a6ee8ACE'] , '0xeCDb1a863e9623993eB68a54ED56484b70fFAf1A', '1644647995').send({from: '0xeCDb1a863e9623993eB68a54ED56484b70fFAf1A', value:'1000000000000000000'})
 				.on('transactionHash', (hash) => {
         			console.log("Swaping Done!");
-          			
+				})	
 			})
 		})
   
